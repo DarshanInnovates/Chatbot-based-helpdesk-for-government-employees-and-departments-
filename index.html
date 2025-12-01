@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Employee Helpdesk - AI Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-title">
+                    <h1>🏛️ Government Employee Helpdesk</h1>
+                    <span class="subtitle">AI Assistant</span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn--outline btn--sm" id="languageToggle">🌐 EN/हिं</button>
+                    <button class="btn btn--outline btn--sm" id="exportChat">📄 Export</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="department-selector">
+                    <label for="department" class="form-label">Select Department</label>
+                    <select id="department" class="form-control">
+                        <option value="">Choose Department</option>
+                    </select>
+                </div>
+
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="quick-actions-grid" id="quickActionsGrid">
+                        <!-- Quick action buttons will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="recent-queries">
+                    <h3>Recent Queries</h3>
+                    <ul class="recent-list" id="recentList">
+                        <li>Procurement Process</li>
+                        <li>Leave Balance Check</li>
+                        <li>Budget Approval Status</li>
+                        <li>Inter-dept Meeting</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Chat Area -->
+            <main class="chat-container">
+                <div class="chat-header">
+                    <div class="chat-status">
+                        <div class="status-indicator online"></div>
+                        <span>AI Assistant Online</span>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="btn btn--outline btn--sm" id="searchToggle">🔍 Search</button>
+                        <button class="btn btn--secondary btn--sm" id="escalateBtn">👨‍💼 Human Support</button>
+                    </div>
+                </div>
+
+                <!-- Search Bar (hidden by default) -->
+                <div class="search-bar hidden" id="searchBar">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search chat history...">
+                    <button class="btn btn--primary btn--sm" id="searchBtn">Search</button>
+                    <button class="btn btn--outline btn--sm" id="clearSearch">Clear</button>
+                </div>
+
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will be populated by JavaScript -->
+                </div>
+
+                <div class="typing-indicator hidden" id="typingIndicator">
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span>AI Assistant is typing...</span>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="chat-input">
+                        <input type="text" class="form-control" id="messageInput" placeholder="Type your question here...">
+                        <button class="btn btn--primary" id="sendBtn">
+                            <span id="sendBtnText">Send</span>
+                            <span id="sendBtnIcon">📤</span>
+                        </button>
+                    </div>
+                    <div class="input-actions">
+                        <button class="btn btn--outline btn--sm" id="voiceBtn">🎤 Voice</button>
+                        <button class="btn btn--outline btn--sm" id="attachBtn">📎 Attach</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Rating Modal -->
+    <div class="modal hidden" id="ratingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Rate this interaction</h3>
+                <button class="modal-close" id="closeRatingModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>How helpful was this response?</p>
+                <div class="rating-stars">
+                    <button class="star" data-rating="1">⭐</button>
+                    <button class="star" data-rating="2">⭐</button>
+                    <button class="star" data-rating="3">⭐</button>
+                    <button class="star" data-rating="4">⭐</button>
+                    <button class="star" data-rating="5">⭐</button>
+                </div>
+                <textarea class="form-control" placeholder="Additional feedback (optional)" id="feedbackText"></textarea>
+                <div class="modal-actions">
+                    <button class="btn btn--primary" id="submitRating">Submit</button>
+                    <button class="btn btn--outline" id="skipRating">Skip</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Escalation Modal -->
+    <div class="modal hidden" id="escalationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Connect with Human Agent</h3>
+                <button class="modal-close" id="closeEscalationModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Please provide details for the human agent:</p>
+                <div class="form-group">
+                    <label class="form-label">Priority Level</label>
+                    <select class="form-control" id="prioritySelect">
+                        <option value="low">Low - General inquiry</option>
+                        <option value="medium">Medium - Process guidance needed</option>
+                        <option value="high">High - Urgent resolution required</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Issue Summary</label>
+                    <textarea class="form-control" id="issueSummary" placeholder="Brief description of your issue..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn--primary" id="connectAgent">Connect Now</button>
+                    <button class="btn btn--outline" id="cancelEscalation">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
