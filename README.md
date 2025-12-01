@@ -13,19 +13,16 @@ Secure authentication for employees and admin users
 🛠 Tech Stack
 
 Frontend:
-React / HTML / CSS / JavaScript
+React / HTML / CSS 
 
 Backend:
-Node.js / Python (Flask or FastAPI)
-
-NLP Engine:
-Rasa / Dialogflow / Hugging Face Transformers
+JavaScript
 
 Database:
 MySQL / MongoDB
 
 Deployment:
-Docker / Cloud (AWS, GCP, or Azure)
+ Cloud (AWS, GCP, or Azure)
 
 Project Structure (example)
 chatbot-helpdesk/
